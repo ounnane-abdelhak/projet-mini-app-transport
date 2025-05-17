@@ -1,5 +1,5 @@
 package transport.core;
-
+import java.io.Serializable;
 public class Station implements Suspendable {
     private String nom;
     private String adresse;

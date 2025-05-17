@@ -1,6 +1,6 @@
 package transport.core;
-
-public class MoyenTransport implements Suspendable {
+import java.io.Serializable;
+public class MoyenTransport implements Suspendable, Serializable  {
     private String identifiant;
     private boolean suspendu = false;
 

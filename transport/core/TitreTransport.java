@@ -1,47 +1,52 @@
 package transport.core;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class TitreTransport {
-    private static int nextId = 1;
-    protected int idTitre;
+public abstract class TitreTransport implements Suspendable, Serializable {
+    private static final long serialVersionUID = 1L;
+    private static final AtomicInteger nextIdTitre = new AtomicInteger(1);
+
+    protected final int idTitre;
     protected LocalDate dateEmission;
-    protected double prix;
+    protected LocalDate dateExpiration;
+    protected boolean estSuspendu;
+    protected double prix; // Price attribute as per PDF
 
-    public TitreTransport(LocalDate dateEmission, double prix) {
-        this.idTitre = nextId++;
+    // Constructor updated to include prix
+    public TitreTransport(LocalDate dateEmission, LocalDate dateExpiration, double prix) {
+        this.idTitre = nextIdTitre.getAndIncrement();
         this.dateEmission = dateEmission;
+        this.dateExpiration = dateExpiration;
         this.prix = prix;
+        this.estSuspendu = false;
     }
 
-    public int getIdTitre() {
-        return idTitre;
-    }
+    // Getters
+    public int getIdTitre() { return idTitre; }
+    public LocalDate getDateEmission() { return dateEmission; }
+    public LocalDate getDateExpiration() { return dateExpiration; }
+    public double getPrix() { return prix; } // Getter for prix
 
-    public LocalDate getDateEmission() {
-        return dateEmission;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
+    // Suspendable implementation
+    @Override
+    public void suspendre() { this.estSuspendu = true; }
+    @Override
+    public void reactiver() { this.estSuspendu = false; }
+    @Override
+    public boolean estSuspendu() { return this.estSuspendu; }
+    @Override
+    public String getEtat() { return estSuspendu ? "Suspendu" : "Actif"; }
 
     public abstract boolean valider() throws TitreNonValideException;
 
-    public void appliquerReduction(double pourcentage) throws ReductionImpossibleException {
-        if (pourcentage < 0 || pourcentage > 100) {
-            throw new ReductionImpossibleException("Le pourcentage de réduction doit être entre 0 et 100.");
-        }
-        this.prix -= this.prix * (pourcentage / 100.0);
-    }
-
     @Override
     public String toString() {
-        return "Titre N°" + idTitre + ", emis le " + dateEmission + ", prix: " + String.format("%.2f", prix) + " DA";
+        return "Titre N°" + idTitre +
+                ", Emission: " + dateEmission +
+                ", Expiration: " + dateExpiration +
+                ", Prix: " + String.format("%.2f", prix) + " DA" +
+                ", Etat: " + getEtat();
     }
 }
-
