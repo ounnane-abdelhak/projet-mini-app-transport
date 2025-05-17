@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="transport.control.ValidateFareScreenController">
+    <top>
+        <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20.0" bottom="10.0" left="20.0" right="20.0" />
+            </padding>
+            <Label text="Fare Medium Validation">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </Label>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER_LEFT" spacing="15.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+            </padding>
+            <Label text="Enter Transport Pass ID:" />
+            <TextField fx:id="passIdField" promptText="Enter ID here" />
+            <Button fx:id="validateButton" onAction="#handleValidate" prefWidth="150.0" text="Validate Pass" />
+            <Label fx:id="validationStatusLabel" wrapText="true">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Label>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10.0" bottom="20.0" left="20.0" right="20.0" />
+            </padding>
+            <Button fx:id="backToMenuButton" onAction="#handleBackToMenu" text="Back to Main Menu" />
+        </HBox>
+    </bottom>
+</BorderPane>
+

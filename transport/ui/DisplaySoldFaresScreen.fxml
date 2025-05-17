@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="transport.control.DisplaySoldFaresScreenController">
+    <top>
+        <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20.0" bottom="10.0" left="20.0" right="20.0" />
+            </padding>
+            <Label text="Sold Fare Media">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+            </Label>
+        </VBox>
+    </top>
+    <center>
+        <ListView fx:id="soldFaresListView" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </BorderPane.margin>
+        </ListView>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10.0" bottom="20.0" left="20.0" right="20.0" />
+            </padding>
+            <Button fx:id="refreshButton" onAction="#handleRefresh" text="Refresh List"/>
+            <Button fx:id="backToMenuButton" onAction="#handleBackToMenu" text="Back to Main Menu" />
+        </HBox>
+    </bottom>
+</BorderPane>
+
