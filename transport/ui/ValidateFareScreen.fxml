@@ -8,31 +8,60 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.effect.DropShadow?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="transport.control.ValidateFareScreenController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="650" prefWidth="900" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="transport.control.ValidateFareScreenController" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f0f0f0);">
     <top>
         <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
             <padding>
                 <Insets top="20.0" bottom="10.0" left="20.0" right="20.0" />
             </padding>
-            <Label text="Fare Medium Validation">
+
+            <!-- Logo -->
+            <ImageView fitHeight="80.0" fitWidth="192.0" preserveRatio="true">
+                <Image url="@esi_logo.png"/>
+            </ImageView>
+
+            <Label text="Fare Medium Validation" textFill="#262a68">
                 <font>
-                    <Font name="System Bold" size="20.0" />
+                    <Font name="System Bold" size="24.0" />
                 </font>
+                <effect>
+                    <DropShadow color="#00000033" radius="2.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
             </Label>
         </VBox>
     </top>
     <center>
-        <VBox alignment="CENTER_LEFT" spacing="15.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-color: #262a68; -fx-border-radius: 10; -fx-border-width: 1;">
             <padding>
-                <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
             </padding>
-            <Label text="Enter Transport Pass ID:" />
-            <TextField fx:id="passIdField" promptText="Enter ID here" />
-            <Button fx:id="validateButton" onAction="#handleValidate" prefWidth="150.0" text="Validate Pass" />
-            <Label fx:id="validationStatusLabel" wrapText="true">
+            <Label text="Enter Transport Pass ID:" textFill="#262a68">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+            </Label>
+            <TextField fx:id="passIdField" promptText="Enter ID here" style="-fx-background-radius: 5; -fx-font-size: 14px;">
+                <effect>
+                    <DropShadow color="#00000033" radius="2.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </TextField>
+            <!-- Validate Button - Fixed -->
+            <Button fx:id="validateButton" onAction="#handleValidate" text="Validate Pass"
+                    style="-fx-cursor: hand; -fx-background-color: #262a68; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 200; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
                 <font>
                     <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
+            <Label fx:id="validationStatusLabel" wrapText="true" textFill="#262a68">
+                <font>
+                    <Font size="16.0" />
                 </font>
             </Label>
         </VBox>
@@ -42,8 +71,22 @@
             <padding>
                 <Insets top="10.0" bottom="20.0" left="20.0" right="20.0" />
             </padding>
-            <Button fx:id="backToMenuButton" onAction="#handleBackToMenu" text="Back to Main Menu" />
+            <Label text="© 2025 ESI Algiers" textFill="#262a68">
+                <font>
+                    <Font size="12.0" />
+                </font>
+            </Label>
+            <HBox HBox.hgrow="ALWAYS" />
+            <!-- Back Button - Fixed -->
+            <Button fx:id="backToMenuButton" onAction="#handleBackToMenu" text="Back to Main Menu"
+                    style="-fx-cursor: hand; -fx-background-color: #000000; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 300; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
         </HBox>
     </bottom>
 </BorderPane>
-

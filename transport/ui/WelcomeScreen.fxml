@@ -5,30 +5,101 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.effect.DropShadow?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="transport.control.WelcomeScreenController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+<StackPane xmlns:fx="http://javafx.com/fxml/1"  prefHeight="650" prefWidth="900" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="transport.control.WelcomeScreenController" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f0f0f0);">
+    <VBox alignment="CENTER" spacing="20.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
 
-    <Label text="Welcome to ESI-RUN Transport Management">
-        <font>
-            <Font name="System Bold" size="24.0" />
-        </font>
-    </Label>
+        <!-- Logo and Header -->
+        <HBox alignment="CENTER" spacing="15.0">
+            <ImageView fitHeight="100.0" fitWidth="240.0" preserveRatio="true">
+                <Image url="@esi_logo.png"/>
+            </ImageView>
+        </HBox>
 
-    <VBox alignment="CENTER" spacing="10.0">
-        <Label text="Main Menu">
+        <Label text="ESI-RUN Transport Management" textFill="#262a68">
             <font>
-                <Font size="18.0" />
+                <Font name="System Bold" size="28.0" />
+            </font>
+            <effect>
+                <DropShadow color="#00000033" radius="2.0" offsetX="1.0" offsetY="1.0" />
+            </effect>
+        </Label>
+
+        <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-color: #262a68; -fx-border-radius: 10; -fx-border-width: 2;">
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+
+            <Label text="Main Menu" textFill="#262a68">
+                <font>
+                    <Font name="System Bold" size="22.0" />
+                </font>
+            </Label>
+
+            <!-- All buttons now have hover fix without breaking other styles -->
+            <Button fx:id="userManagementButton" onAction="#handleUserManagement" prefWidth="300.0" text="User and Fare Management"
+                    style="-fx-cursor: hand; -fx-background-color: #262a68; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 300; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
+
+            <Button fx:id="validateFareButton" onAction="#handleValidateFare" prefWidth="300.0" text="Validate Fare Medium"
+                    style="-fx-cursor: hand; -fx-background-color: #262a68; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 300; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
+
+            <Button fx:id="complaintManagementButton" onAction="#handleComplaintManagement" prefWidth="300.0" text="Complaint Management"
+                    style="-fx-cursor: hand; -fx-background-color: #262a68; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 300; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
+
+            <Button fx:id="displaySoldFaresButton" onAction="#handleDisplaySoldFares" prefWidth="300.0" text="Display Sold Fares"
+                    style="-fx-cursor: hand; -fx-background-color: #262a68; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 300; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
+
+            <Button fx:id="exitButton" onAction="#handleExit" prefWidth="300.0" text="Exit"
+                    style="-fx-cursor: hand; -fx-background-color: #000000; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-min-width: 300; -fx-min-height: 30; -fx-scale-x: 1; -fx-scale-y: 1;">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#00000066" radius="3.0" offsetX="1.0" offsetY="1.0" />
+                </effect>
+            </Button>
+        </VBox>
+
+        <Label text="© 2025 ESI Algiers - All Rights Reserved" textFill="#262a68">
+            <font>
+                <Font size="12.0" />
             </font>
         </Label>
-        <Button fx:id="userManagementButton" onAction="#handleUserManagement" prefWidth="200.0" text="User &amp; Fare Management" />
-        <Button fx:id="validateFareButton" onAction="#handleValidateFare" prefWidth="200.0" text="Validate Fare Medium" />
-        <Button fx:id="complaintManagementButton" onAction="#handleComplaintManagement" prefWidth="200.0" text="Complaint Management (Bonus)" />
-        <Button fx:id="displaySoldFaresButton" onAction="#handleDisplaySoldFares" prefWidth="200.0" text="Display Sold Fares" />
-        <Button fx:id="exitButton" onAction="#handleExit" prefWidth="200.0" text="Exit" />
     </VBox>
-
-</VBox>
-
+</StackPane>
